@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class ConsoleStarter {
     public static void main(String[] args) {
 
-        Application application = new Application(args);
-        Result run = application.run();
+        Application application = new Application();
+        Result run = application.run(args);
         System.out.println(run);
 
 
