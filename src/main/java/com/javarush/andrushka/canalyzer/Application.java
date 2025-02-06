@@ -2,14 +2,15 @@ package com.javarush.andrushka.canalyzer;
 
 import com.javarush.andrushka.canalyzer.controllers.MainController;
 import com.javarush.andrushka.canalyzer.entity.Result;
+import com.javarush.andrushka.canalyzer.exceptions.AppException;
 
 import java.util.Arrays;
 
 public class Application {
-    private MainController mainController;
+    private final MainController mainController;
 
     public Application() {
-        mainController.doAction()
+
         mainController = new MainController();
 
     }
@@ -20,6 +21,6 @@ public class Application {
             String[] parameters = Arrays.copyOfRange(args, 1, args.length);
             mainController.doAction(action, parameters);
         }
-        return null;
+        throw  new AppException();
     }
 }
