@@ -1,18 +1,16 @@
 package com.javarush.andrushka.canalyzer;
 
+import com.javarush.andrushka.canalyzer.entity.Result;
+
 import java.util.Arrays;
 
 public class ConsoleStarter {
     public static void main(String[] args) {
 
+        Application application = new Application(args);
+        Result run = application.run();
+        System.out.println(run);
 
-        /*int key = 111;
-        String text = "Just a text";
-        String result = "";*/
-
-        System.out.println(Arrays.toString(args));
-        Application result = new Application(args);
-        result.run();
 
     }
 }
