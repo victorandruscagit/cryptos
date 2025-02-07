@@ -5,17 +5,13 @@ import com.javarush.andrushka.canalyzer.commands.Decoder;
 import com.javarush.andrushka.canalyzer.commands.Encoder;
 import com.javarush.andrushka.canalyzer.exceptions.AppException;
 
-public enum Actions {
+public enum      Actions {
     ENCODE(new Encoder()),
-
     DECODE(new Decoder());
-
     private final Action action;
-
     Actions(Action action) {
         this.action = action;
     }
-
     public static Action find(String actionName) {
         try {
             Actions values = Actions.valueOf(actionName.toUpperCase());
