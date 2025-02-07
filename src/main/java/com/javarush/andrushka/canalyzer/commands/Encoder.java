@@ -7,6 +7,6 @@ public class Encoder implements Action{
     @Override
     public Result exectute(String[] parameters) {
 
-         return new Result("encode all right", ResultCode.OK);
+        return new Result("encode all right", ResultCode.OK);
     }
 }
