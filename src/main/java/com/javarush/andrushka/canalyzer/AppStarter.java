@@ -29,7 +29,6 @@ public class AppStarter {
                     int key = Integer.parseInt(scanner.nextLine());
                     try {
                         if (inputValidator.isFileExists(fileToEncrypt) && inputValidator.isKeyValid(key)) {
-                            // TODO logic to encrypt
                             caesarCipher.encrypt(fileToEncrypt, key);
                         }
                     } catch (IOException e) {
