@@ -1,6 +1,7 @@
 package com.javarush.andrushka.canalyzer;
 
 
+import com.javarush.andrushka.canalyzer.fileswork.FileManger;
 import com.javarush.andrushka.canalyzer.shifr.CaesarCipher;
 import com.javarush.andrushka.canalyzer.validator.InputValidator;
 
@@ -10,7 +11,9 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class AppStarter {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
+
         Scanner scanner = new Scanner(System.in);
         InputValidator inputValidator = new InputValidator();
         CaesarCipher caesarCipher = new CaesarCipher();
@@ -27,6 +30,7 @@ public class AppStarter {
                     String fileToEncrypt = scanner.nextLine();
                     System.out.println("Type encryption key....");
                     int key = Integer.parseInt(scanner.nextLine());
+                    FileManger.listDirAndFiles(fileToEncrypt);
                     try {
                         if (inputValidator.isFileExists(fileToEncrypt) && inputValidator.isKeyValid(key)) {
                             caesarCipher.encrypt(fileToEncrypt, key);

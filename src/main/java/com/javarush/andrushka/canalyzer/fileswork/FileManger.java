@@ -10,7 +10,7 @@ import java.util.*;
 public class FileManger {
 
 
-    public String readFile(String filePath) throws IOException {
+    public  static  String readFile(String filePath) throws IOException {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Provide a path");
             String currentDirectory = scanner.nextLine();
@@ -27,7 +27,7 @@ public class FileManger {
 
     }
 
-    private static void userChoice(int userChoice, String currentDirectory, Scanner scanner) throws IOException {
+    public static void userChoice(int userChoice, String currentDirectory, Scanner scanner) throws IOException {
         switch (userChoice) {
             case 1:
                 listDirAndFiles(currentDirectory);
@@ -51,7 +51,7 @@ public class FileManger {
         }
     }
 
-    private static void sortFiles(String currentDirectory, int sortType) {
+    public static void sortFiles(String currentDirectory, int sortType) {
         File directory = Path.of(currentDirectory).toFile();
         for (File file : directory.listFiles()) {
             List<File> fileList = Arrays.asList(file);
@@ -114,7 +114,7 @@ public class FileManger {
 
     }
 
-    private static void listDirAndFiles(String currentDirectory) throws IOException {
+    public static void listDirAndFiles(String currentDirectory) throws IOException {
         File directory = Files.createDirectory(Paths.get(currentDirectory)).toFile();
 
         try {
