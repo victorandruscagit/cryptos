@@ -3,9 +3,7 @@ package com.javarush.andrushka.canalyzer.fileswork;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Scanner;
 
@@ -47,6 +45,32 @@ public class FileManger {
     }
 
     private static void copyOp(String sourceFile, String destFile) {
+        Path source = Path.of(sourceFile);
+        Path destination= Path.of(destFile);
+
+        if (Files.isDirectory(source)) {
+            try {
+                Files.walk(source)
+                        .forEach(pfile -> {
+                            Path resolve = destination.resolve(pfile.relativize(pfile));
+                        });
+                Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        } else {
+            try {
+                Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+
+
 
     }
 
