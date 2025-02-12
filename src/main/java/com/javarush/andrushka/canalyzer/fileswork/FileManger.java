@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileManger {
 
@@ -19,24 +19,7 @@ public class FileManger {
                 System.out.printf("1 -> Files and directories ...  %s:%n", currentDirectory);
                 System.out.printf("2 -> Find by name   %s:%n", currentDirectory);
                 System.out.print("2 -> Copy   ");
-                switch (userChoice) {
-                    case 1:
-                        listDirAndFiles(currentDirectory);
-                        break;
-                    case 2:
-                        System.out.print("Type looked up name : ...");
-                        String byName = scanner.nextLine();
-                        searchByName(currentDirectory, byName);
-                        break;
-                    case 3:
-                        System.out.println("Type source file....");
-                        String sourceFile = scanner.nextLine();
-                        System.out.println("Type destination file....");
-                        String destFile = scanner.nextLine();
-                        copyOp(sourceFile, destFile);
-
-
-                }
+                userChoice(userChoice, currentDirectory, scanner);
 
             }
         }
@@ -44,9 +27,52 @@ public class FileManger {
 
     }
 
+    private static void userChoice(int userChoice, String currentDirectory, Scanner scanner) throws IOException {
+        switch (userChoice) {
+            case 1:
+                listDirAndFiles(currentDirectory);
+                break;
+            case 2:
+                System.out.print("Type looked up name : ...");
+                String byName = scanner.nextLine();
+                searchByName(currentDirectory, byName);
+                break;
+            case 3:
+                System.out.println("Type source file....");
+                String sourceFile = scanner.nextLine();
+                System.out.println("Type destination file....");
+                String destFile = scanner.nextLine();
+                copyOp(sourceFile, destFile);
+                break;
+            case 4:
+                System.out.println("Sort type. 1 - By name . 2 - By lenght");
+                int sortType = Integer.parseInt(scanner.nextLine());
+                sortFiles(currentDirectory, sortType);
+        }
+    }
+
+    private static void sortFiles(String currentDirectory, int sortType) {
+        File directory = Path.of(currentDirectory).toFile();
+        for (File file : directory.listFiles()) {
+            List<File> fileList = Arrays.asList(file);
+            switch (sortType) {
+                case 1:
+                    Collections.sort(fileList, Comparator.comparing(File::getName));
+                    break;
+                case 2:
+                    Collections.sort(fileList, Comparator.comparingLong(File::length));
+                    break;
+                default:
+                    System.out.println("");
+
+
+            }
+        }
+    }
+
     private static void copyOp(String sourceFile, String destFile) {
         Path source = Path.of(sourceFile);
-        Path destination= Path.of(destFile);
+        Path destination = Path.of(destFile);
 
         if (Files.isDirectory(source)) {
             try {
@@ -67,9 +93,6 @@ public class FileManger {
                 throw new RuntimeException(e);
             }
         }
-
-
-
 
 
     }
