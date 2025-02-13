@@ -10,4 +10,5 @@ public class MyCipher {
     public static final int ALPHABET_LENGTH = ALPHABET.length;
     FileMan  fileManager = new FileMan();
 
+
 }
