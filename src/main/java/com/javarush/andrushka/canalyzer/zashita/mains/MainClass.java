@@ -87,7 +87,7 @@ public class MainClass {
 
     public static String keyValidator(int key) {
         FileValidator fileValidator = new FileValidator();
-        if (!fileValidator.checkKey(ERROR_KEY_MESSAGE, MyCipher.ALPHABET_LENGTH)) {
+        if (!fileValidator.checkKey( key, MyCipher.ALPHABET_LENGTH)) {
             System.out.println(ERROR_KEY_MESSAGE);
             return ERROR_KEY_MESSAGE;
         }

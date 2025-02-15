@@ -2,7 +2,6 @@ package com.javarush.andrushka.canalyzer.fileswork;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -103,7 +102,7 @@ public class FileManger {
 
     }
 
-    public List<String> readFile(String content, String filePath) {
+    public List<String> readFileLines(String content, String filePath) {
 
         try {
             return Files.readAllLines(Path.of(content));
@@ -114,4 +113,14 @@ public class FileManger {
 
 
     }
+
+    public String entireFilePath(String inputFile, int key) {
+        String inputFileDir = Path.of(inputFile).getParent().toString();
+        String outputFile = inputFile.substring(inputFile.lastIndexOf('/'),inputFile.lastIndexOf('.')) + key +".txt";
+        return String.join(inputFileDir, outputFile);
+
+
+    }
+
+
 }
