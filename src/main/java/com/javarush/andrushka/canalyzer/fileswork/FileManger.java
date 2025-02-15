@@ -116,7 +116,8 @@ public class FileManger {
 
     public String entireFilePath(String inputFile, int key) {
         String inputFileDir = Path.of(inputFile).getParent().toString();
-        String outputFile = inputFile.substring(inputFile.lastIndexOf('/'),inputFile.lastIndexOf('.')) + key +".txt";
+        String outputFile = inputFile.substring(inputFile.lastIndexOf('/'),String.join(inputFile.lastIndexOf('.')
+                , new StringBuilder().append(key).append(".txt").toString();
         return String.join(inputFileDir, outputFile);
 
 

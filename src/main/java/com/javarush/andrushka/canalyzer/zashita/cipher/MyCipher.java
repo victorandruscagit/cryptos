@@ -15,7 +15,7 @@ public class MyCipher {
 
     public void encrypt(String inputFile, int key) {
         try {
-            String s = fileManager.readFileLines();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
