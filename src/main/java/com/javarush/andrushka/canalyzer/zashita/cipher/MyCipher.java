@@ -11,4 +11,7 @@ public class MyCipher {
     FileMan  fileManager = new FileMan();
 
 
+    public void encrypt(String inputFile, int key) {
+
+    }
 }

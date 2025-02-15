@@ -15,7 +15,7 @@ public class FileValidator {
         return file.length() == 0 ? false : true;
     }
 
-    public boolean rightExtensioCheck(String file) {
+    public boolean rightExtensionCheck(String file) {
         String txtPart = file.substring(file.lastIndexOf(".") + 1, file.length());
         return Objects.equals(txtPart, "txt") ? true : false;
     }

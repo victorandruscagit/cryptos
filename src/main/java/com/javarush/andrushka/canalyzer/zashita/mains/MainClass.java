@@ -5,6 +5,7 @@ import com.javarush.andrushka.canalyzer.zashita.validation.FileValidator;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -23,8 +24,8 @@ public class MainClass {
         while (true) {
             System.out.println("Choose an option" +
                     "\n 1 - Encrypt the file" +
-                    "\n 2 - Decrytp the file" +
-                    "\n 3 - Decrypt file via brute force attack" +
+                    "\n 2 - Decrypt the file" +
+                    "\n 3 - Decrypt  the file via brute force attack" +
                     "\n 4 - Exit");
 
             int menu = Integer.parseInt(console.nextLine());
@@ -34,11 +35,22 @@ public class MainClass {
                     inputFile = console.nextLine();
                     System.out.println(INPUT_KEY_MESSAGE);
                     key = Integer.parseInt(console.nextLine());
-                    break;
+                    if (Objects.isNull(keyValidator(key))
+                            && Objects.isNull(fileValidator(inputFile))) {
+                        myCipher.encrypt(inputFile, key);
+                    }
+                    return;
+                case 2:
+
             }
 
 
         }
+    }
+
+    public static String fileValidator(String inputFile) {
+
+
     }
 
     public static String keyValidator(int key) {
