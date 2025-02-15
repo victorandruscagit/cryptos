@@ -14,4 +14,13 @@ public class MyCipher {
     public void encrypt(String inputFile, int key) {
 
     }
+
+    public void decrypt(String inputFile, int key) {
+
+    }
+
+    public void bruteForce(String inputFile) {
+
+
+    }
 }
