@@ -4,13 +4,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.UUID;
 
 public class FilesStuffExperiments {
     private static final String HOME = System.getProperty("user.home");
     public static void main(String[] args) throws IOException {
 
-       createFile();
+       //createFile();
+       rightExtensioCheck("ca.go.txt");
 
     }
 
@@ -29,4 +31,12 @@ public class FilesStuffExperiments {
         System.out.println(directory.toFile().isDirectory());
 
     }
+
+    public  static void rightExtensioCheck(String file) {
+        String substring = file.substring(file.lastIndexOf(".") + 1, file.length());
+        System.out.println(substring);
+        System.out.println(file.lastIndexOf("."));
+    }
+
+
 }
