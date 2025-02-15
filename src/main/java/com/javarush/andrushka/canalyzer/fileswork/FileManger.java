@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileManger {
@@ -92,7 +93,24 @@ public class FileManger {
 
     }
 
-    public void writeFile(String content, String filePath) {
+    public void writeFile(List<String> contentLines, String outputFilePath) {
+        try {
+            Files.write(Path.of(outputFilePath), contentLines);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    public List<String> readFile(String content, String filePath) {
+
+        try {
+            return Files.readAllLines(Path.of(content));
+        } catch (IOException e) {
+            System.out.println("Wasn't able to read file");
+            throw new RuntimeException(e);
+        }
 
 
     }

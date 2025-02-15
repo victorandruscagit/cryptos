@@ -20,7 +20,8 @@ public class FileValidator {
         return Objects.equals(txtPart, "txt") ? true : false;
     }
 
-    public boolean checkKey(String errorKeyMessage, int alphabetLength) {
-        return false;
+    public boolean checkKey(Integer key, int maxValue) {
+         return (key > 0) && (key < maxValue);
+
     }
 }
