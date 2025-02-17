@@ -11,6 +11,8 @@ target/
 *.iws
 *.iml
 *.ipr
+src/main/java/com/javarush/andrushka/canalyzer/stufexperiments
+
 
 ### Eclipse ###
 .apt_generated
