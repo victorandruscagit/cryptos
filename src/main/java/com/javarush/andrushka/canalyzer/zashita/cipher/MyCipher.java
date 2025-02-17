@@ -1,6 +1,6 @@
 package com.javarush.andrushka.canalyzer.zashita.cipher;
 
-import com.javarush.andrushka.canalyzer.fileswork.FileManger;
+import com.javarush.andrushka.canalyzer.zashita.fileswork.FileManger;
 
 import java.util.ArrayList;
 import java.util.List;
