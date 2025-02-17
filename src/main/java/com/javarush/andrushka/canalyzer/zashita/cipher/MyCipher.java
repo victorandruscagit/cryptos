@@ -42,6 +42,9 @@ public class MyCipher {
     }
 
     public void bruteForce(String inputFile) {
+        for (int i = 0; i < ALPHABET.length; i++) {
+            decrypt(inputFile, i);
+        }
 
 
     }
