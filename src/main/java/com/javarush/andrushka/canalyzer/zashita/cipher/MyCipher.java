@@ -33,38 +33,40 @@ public class MyCipher {
     }
 
     public void decrypt(String inputFile, int key) {
-
+        List<String> iFileList = fileManager.readFileLines(inputFile);
+        List<String> oFileList = new ArrayList<>();
+        for (String string : iFileList) {
+            oFileList.add(replace(string, -key));
+            fileManager.writeFile(iFileList, string);
+        }
     }
 
     public void bruteForce(String inputFile) {
+        for (int i = 0; i < ALPHABET.length; i++) {
+            decrypt(inputFile, i);
+        }
 
 
     }
 
     public String replace(String line, int key) {
-
         int startIndex;
         int endIndex;
         char symbol;
         String result = "";
 
         for (int i = 0; i < line.length(); i++) {
-
             symbol = line.charAt(i);
             startIndex = arrayIndex(Character.toLowerCase(symbol));
-
             if ((startIndex == -1) || (symbol == '0')) {
                 continue;
             }
-
             if (key > 0) {
-
                 if (startIndex + key < ALPHABET_LENGTH) {
                     endIndex = startIndex + key;
                 } else {
                     endIndex = key - (ALPHABET_LENGTH - startIndex);
                 }
-
                 if (Character.isUpperCase(symbol)) {
                     if (endIndex >= 32) {
                         result = result + ALPHABET[endIndex] + '0';
@@ -76,13 +78,11 @@ public class MyCipher {
                 }
 
             } else {
-
                 if (startIndex + key >= 0) {
                     endIndex = startIndex + key;
                 } else {
                     endIndex = ALPHABET_LENGTH + startIndex + key;
                 }
-
                 if (Character.isUpperCase(symbol)) {
                     result = result + Character.toUpperCase(ALPHABET[endIndex]);
                 } else {

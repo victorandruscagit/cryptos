@@ -1,8 +1,8 @@
 package com.javarush.andrushka.canalyzer;
 
 
-import com.javarush.andrushka.canalyzer.shifr.CaesarCipher;
 import com.javarush.andrushka.canalyzer.validator.InputValidator;
+import com.javarush.andrushka.canalyzer.zashita.cipher.MyCipher;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -13,7 +13,7 @@ public class AppStarter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         InputValidator inputValidator = new InputValidator();
-        CaesarCipher caesarCipher = new CaesarCipher();
+        MyCipher caesarCipher = new MyCipher();
         while (true) {
             System.out.println("/n Select an optoin :");
             System.out.println("1 Encrypt  text :");
