@@ -1,4 +1,4 @@
-package com.javarush.andrushka.canalyzer.fileswork;
+package com.javarush.andrushka.canalyzer.zashita.fileswork;
 
 import java.io.File;
 import java.io.IOException;
